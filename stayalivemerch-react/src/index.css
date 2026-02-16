@@ -1,0 +1,30 @@
+/* RESET GLOBAL PROFESIONAL */
+@import "tailwindcss";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-color: #ffffff;
+  color: #111;
+}
+
+/* Quitar estilos del template de Vite */

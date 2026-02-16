@@ -1,0 +1,70 @@
+.home {
+  width: 100%;
+}
+
+/* HERO */
+
+.hero {
+  height: 80vh;
+  background: url("https://images.unsplash.com/photo-1520975922203-b15c93b3f0aa")
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  letter-spacing: 6px;
+}
+
+.hero-content p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+.hero-content button {
+  padding: 12px 30px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* SECCIONES */
+
+.section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section h2 {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+/* GRID */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+/* BANNER FINAL */
+
+.promo-banner {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  margin-top: 60px;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 40px;
+}

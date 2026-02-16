@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "stayalivemerch",
+    "stayalive": "stayalive-4cb5a",
+    "stayalivemerch": "stayalivemerch"
+  },
+  "targets": {},
+  "etags": {}
+}

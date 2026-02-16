@@ -1,0 +1,74 @@
+/* ===============================
+   APP LAYOUT PROFESIONAL
+================================= */
+
+/* Layout principal */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Contenido principal crece automáticamente */
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* Contenedor reutilizable (estilo empresa real) */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* ===============================
+   UTILIDADES GLOBALES
+================================= */
+
+/* Imágenes responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Links sin estilos raros */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Botones base */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* Botón negro profesional */
+.btn-primary {
+  background: #111;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 4px;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+/* ===============================
+   RESPONSIVE BASE
+================================= */
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

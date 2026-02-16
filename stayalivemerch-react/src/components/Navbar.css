@@ -1,0 +1,61 @@
+.topbar {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  border-bottom: 1px solid #eee;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: black;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+}
+
+.cart {
+  font-weight: bold;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
