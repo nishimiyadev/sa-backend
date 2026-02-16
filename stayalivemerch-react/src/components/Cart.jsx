@@ -10,7 +10,7 @@ export default function Cart({
   increaseQuantity,
   decreaseQuantity,
 }) {
-  const [success, setSuccess] = useState(false);
+  // const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [mensaje, setMensaje] = useState("");
 
@@ -33,15 +33,15 @@ export default function Cart({
     setMensaje("");
 
     try {
-      // Crea una nueva orden en Firestore
-      await addDoc(collection(db, "ordenes"), {
+      // 1️⃣ Crear orden en Firestore
+      const orderRef = await addDoc(collection(db, "ordenes"), {
         usuarioId: user.uid,
         email: user.email,
         fecha: serverTimestamp(),
         total,
-        estado: "pendiente", // estado general de la orden
-        estadoPago: "pendiente", // estado específico del pago
-        metodoPago: "mercadopago", // método elegido
+        estado: "pendiente",
+        estadoPago: "pendiente",
+        metodoPago: "mercadopago",
         items: cart.map((item) => ({
           id: item.id,
           nombre: item.nombre,
@@ -50,11 +50,31 @@ export default function Cart({
           subtotal: item.precio * item.cantidad,
         })),
       });
+      // Mostrar mensaje de éxito (temporal, antes de redirigir)
+      //setSuccess(true);
+      // 2️⃣ Llamar a tu backend
+      const response = await fetch(
+        "https://sa-backend-ebo7.onrender.com/create-preference",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            items: cart.map((item) => ({
+              title: item.nombre,
+              price: item.precio,
+              quantity: item.cantidad,
+            })),
+            orderId: orderRef.id,
+          }),
+        },
+      );
 
-      // Limpiar carrito y mostrar mensaje
-      clearCart();
-      setSuccess(true);
-      setMensaje("✅ Orden creada con éxito. Gracias por tu compra!");
+      const data = await response.json();
+
+      // 3️⃣ Redirigir a Mercado Pago
+      window.location.href = data.init_point;
     } catch (error) {
       console.error("Error al crear la orden:", error);
       setMensaje("❌ Ocurrió un error al crear la orden.");
@@ -66,19 +86,6 @@ export default function Cart({
   return (
     <div className="max-w-md mx-auto p-4 border rounded-lg shadow-sm bg-white">
       <h3 className="text-xl font-semibold mb-3">🛒 Tu carrito</h3>
-      {success && (
-        <p
-          style={{
-            background: "#c8f7c5",
-            padding: "8px",
-            borderRadius: "5px",
-            color: "#1a7f1a",
-            marginBottom: "10px",
-          }}
-        >
-          ✅ Compra realizada con éxito. ¡Gracias por tu pedido!
-        </p>
-      )}
 
       {cart.length === 0 ? (
         <p className="text-gray-500 text-center">Tu carrito está vacío.</p>
