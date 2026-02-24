@@ -44,6 +44,24 @@ app.post("/create-preference", async (req, res) => {
   }
 });
 
+app.post("/webhook", async (req, res) => {
+  try {
+    console.log("Webhook recibido:", req.body);
+
+    const paymentId = req.body?.data?.id;
+
+    if (!paymentId) {
+      return res.sendStatus(200);
+    }
+
+    // Aquí luego verificaremos el pago real
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Error en webhook:", error);
+    res.sendStatus(500);
+  }
+});
+
 app.listen(3000, () => {
   console.log("Servidor corriendo en puerto 3000");
 });
