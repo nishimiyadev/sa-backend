@@ -49,8 +49,8 @@ app.post("/create-preference", async (req, res) => {
         auto_return: "approved",
       },
     });
-
-    res.json({ init_point: response.init_point });
+    // response.init_point es para producción, response.sandbox_init_point es para pruebas
+    res.json({ init_point: response.sandbox_init_point });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error creando preferencia" });
