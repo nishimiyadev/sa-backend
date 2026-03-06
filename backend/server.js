@@ -46,6 +46,7 @@ app.post("/create-preference", async (req, res) => {
           failure: "https://stayalivemerch.web.app/failure",
           pending: "https://stayalivemerch.web.app/pending",
         },
+        notification_url: "https://sa-backend-ebo7.onrender.com/webhook",
         auto_return: "approved",
       },
     });
