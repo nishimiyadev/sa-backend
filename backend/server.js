@@ -38,6 +38,7 @@ app.post("/create-preference", async (req, res) => {
           quantity: Number(item.quantity),
           currency_id: "PEN",
         })),
+        external_reference: orderId,
         metadata: {
           orderId: orderId, // IMPORTANTE
         },
@@ -62,7 +63,7 @@ app.post("/webhook", async (req, res) => {
   try {
     console.log("Webhook recibido:", req.body);
 
-    const paymentId = req.body?.data?.id;
+    const paymentId = req.body?.data?.id || req.query?.id;
 
     if (!paymentId) {
       return res.sendStatus(200);
@@ -81,7 +82,8 @@ app.post("/webhook", async (req, res) => {
     const paymentData = await payment.json();
 
     if (paymentData.status === "approved") {
-      const orderId = paymentData.metadata?.orderId;
+      const orderId =
+        paymentData.external_reference || paymentData.metadata?.orderId;
 
       if (orderId) {
         await db.collection("ordenes").doc(orderId).update({
